@@ -6,7 +6,6 @@
 # Space Complexity: O(n) we return an array of size n same as the input array
 
 def grouped_anagrams(strings)
-  # FYI strings is an array of strings
   string_hash = {}
 
   return [] if strings.empty?
