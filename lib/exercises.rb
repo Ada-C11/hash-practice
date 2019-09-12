@@ -5,9 +5,28 @@
 # Time Complexity: ?
 # Space Complexity: ?
 
+
 def grouped_anagrams(strings)
-  raise NotImplementedError, "Method hasn't been implemented yet!"
+  output = []
+  anagram = {}
+
+  strings.each do |word|
+    key = word.split("").sort
+    puts 
+    if anagram.has_key?(key) == true
+      anagram[key].push(word)
+    else
+      anagram[key] = [word]
+    end
+  end
+
+  anagram.each_key do |key|
+    output.push(anagram[key])
+  end
+
+  return output
 end
+
 
 # This method will return the k most common elements
 # in the case of a tie it will select the first occuring element.
