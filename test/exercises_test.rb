@@ -25,7 +25,7 @@ describe "exercises" do
 
       # Assert
       answer.each_with_index do |array, index|
-        expect(expected_answer).must_include array.sort
+      expect(expected_answer).must_include array.sort
       end
     end
 
