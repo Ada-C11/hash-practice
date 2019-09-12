@@ -2,8 +2,8 @@
 
 # This method will return an array of arrays.
 # Each subarray will have strings which are anagrams of each other
-# Time Complexity: ?
-# Space Complexity: ?
+# Time Complexity: O(n) it must go through the entire list
+# Space Complexity: O(n) we create a hash that is in theory size n with arrays
 
 def grouped_anagrams(strings)
   # FYI strings is an array of strings
