@@ -1,4 +1,4 @@
-
+require 'pry'
 
 # This method will return an array of arrays.
 # Each subarray will have strings which are anagrams of each other
@@ -6,7 +6,21 @@
 # Space Complexity: ?
 
 def grouped_anagrams(strings)
-  raise NotImplementedError, "Method hasn't been implemented yet!"
+  sorted_words = {}
+  anagrams = []
+
+  strings.each do |word|
+    word_sorted = word.chars.sort.join
+    if !sorted_words.include?(word_sorted)
+      sorted_words[word_sorted] = sorted_words.length
+      binding.pry
+      anagrams[sorted_words.length] = [word]
+    else
+      anagrams[sorted_words[word_sorted]].push(word)
+    end
+  end
+
+  return anagrams
 end
 
 # This method will return the k most common elements
