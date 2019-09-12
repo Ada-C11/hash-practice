@@ -2,8 +2,9 @@
 
 # This method will return an array of arrays.
 # Each subarray will have strings which are anagrams of each other
-# Time Complexity: ?
-# Space Complexity: ?
+# Time Complexity: O(n * mlogm)
+# n for .each do, mlogm for sort
+# Space Complexity: O(n)
 
 
 def grouped_anagrams(strings)
@@ -12,7 +13,6 @@ def grouped_anagrams(strings)
 
   strings.each do |word|
     key = word.split("").sort
-    puts 
     if anagram.has_key?(key) == true
       anagram[key].push(word)
     else
