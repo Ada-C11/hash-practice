@@ -33,7 +33,31 @@ end
 # Time Complexity: ?
 # Space Complexity: ?
 def top_k_frequent_elements(list, k)
-  raise NotImplementedError, "Method hasn't been implemented yet!"
+  element_counts = {}
+  count = 0
+
+  return list if list.empty?
+
+  list.each do |num|
+    if element_counts[num]
+      element_counts[num] += 1
+    else
+      element_counts[num] = 1
+    end
+
+  end
+
+  sorted_hash_array = element_counts.sort_by{ |key, val| -val}
+
+  puts sorted_hash_array.to_s
+  return_array = []
+  k.times do |i|
+  return_array.push(sorted_hash_array[i][0])
+  i += 1
+  end
+
+  return return_array
+
 end
 
 
