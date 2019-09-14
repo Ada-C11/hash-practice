@@ -24,14 +24,29 @@ def grouped_anagrams(strings)
   return result
 end
 
-# raise NotImplementedError, "Method hasn't been implemented yet!"
-
 # This method will return the k most common elements
 # in the case of a tie it will select the first occuring element.
 # Time Complexity: ?
 # Space Complexity: ?
 def top_k_frequent_elements(list, k)
-  raise NotImplementedError, "Method hasn't been implemented yet!"
+  hash = Hash.new
+
+  list.each do |element|
+    if hash.include?(element)
+      hash[element] += 1
+    else
+      hash[element] = 1
+    end
+  end
+
+  hash.sort_by { |k, v| v }
+  top_k = []
+
+  hash.each do |k, v|
+    top_k << k
+  end
+
+  return top_k[0..(k - 1)]
 end
 
 # This method will return the true if the table is still
