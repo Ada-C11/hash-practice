@@ -3,6 +3,8 @@
 # Time Complexity: O(n)
 # Space Complexity: O(n)
 
+require 'pry'
+
 def grouped_anagrams(strings)
   return [] if strings.empty?
 
@@ -78,9 +80,9 @@ def valid_sudoku(table)
 end
 
   def in_row?(table)
-    9.times do |row|
+    table.length.times do |row|
         sudoku_hash = Hash.new()
-        9.times do |i|
+        table.length.times do |i|
           # If already encountered before,
           # return false
           if sudoku_hash[table[row][i]]
@@ -101,10 +103,10 @@ end
   # duplicate in current column or not.
   def in_column?(table)
 
-    9.times do |col|
+    table.length.times do |col|
       column_hash = Hash.new()
 
-      9.times do |i|
+      table.length.times do |i|
 
         # If already encountered before,
         # return false
@@ -125,20 +127,23 @@ end
   # in current 3×3 box or not.
   def in_box?(table)
 
-  box_hash = Hash.new()
+  # formula from https://stackoverflow.com/questions/41020695/how-do-i-split-a-9x9-array-into-9-3x3-components
+  grids = table.each_slice(3).map{|strip| strip.transpose.each_slice(3).map{|chunk| chunk.transpose}}.flatten(1)
 
-
-  3.times do |row|
-    3.times do |col|
-       current = table[row][col]
-        if box_hash[current]
-          return false
+  grids.each do |box|
+      box_hash = Hash.new()
+      3.times do |row|
+        3.times do |col|
+           current = box[row][col]
+            if box_hash[current]
+              return false
+            end
+            if current != '.'
+              box_hash[current] = 1
+            end
         end
+      end
 
-        if current != '.'
-          box_hash[current] = 1
-        end
     end
-  end
 
 end
