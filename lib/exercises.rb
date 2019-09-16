@@ -70,21 +70,75 @@ end
 # Time Complexity: ?
 # Space Complexity: ?
 
+# returns a hash of a valid sudoku row
+def get_valid_sudoku
+  sudoku = {
+    "1" => 1,
+    "2" => 1,
+    "3" => 1,
+    "4" => 1,
+    "5" => 1,
+    "6" => 1,
+    "7" => 1,
+    "8" => 1,
+    "9" => 1,
+  }
+  return sudoku
+end
+
+# checks if row is valid
+def valid_row?(row)
+  valid_row = get_valid_sudoku
+  row.each do |char|
+    if valid_row[char]
+      valid_row[char] -= 1
+      if valid_row[char] < 0
+        return false
+      end
+    end
+  end
+  return true
+end
+
+# creates subsections
+def create_sub_sections(table)
+  # code snippet from https://stackoverflow.com/questions/41020695/how-do-i-split-a-9x9-array-into-9-3x3-components
+  table.each_slice(3).map { |row| row.transpose.each_slice(3).map { |section| section.transpose } }.flatten(1)
+end
+
+# checks if subsection is valid
 def valid_sub_section?(section)
+  valid_section = get_valid_sudoku
+  section.each do |row|
+    row.each do |num|
+      if valid_section[num]
+        valid_section[num] -= 1
+        if valid_section[num] < 0
+          return false
+        end
+      end
+    end
+  end
 end
 
 def valid_sudoku(table)
-  valid_sudoku = {
-    1 => 1,
-    2 => 1,
-    3 => 1,
-    4 => 1,
-    5 => 1,
-    6 => 1,
-    7 => 1,
-    8 => 1,
-    9 => 1,
-  }
+  # checks for valid rows
+  table.each do |row|
+    return false if !valid_row?(row)
+  end
 
-  row_values = col_values = valid_sudoku
+  # checks for valid columns
+  trans_table = table.transpose()
+  trans_table.each do |col|
+    return false if !valid_row?(col)
+  end
+
+  # checks for valid subsections
+  sub_sections = create_sub_sections(table)
+  sub_sections.each do |section|
+    if !valid_sub_section?(section)
+      return false
+    end
+  end
+  return true
 end
