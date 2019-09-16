@@ -67,8 +67,8 @@ end
 #   Each element can either be a ".", or a digit 1-9
 #   The same digit cannot appear twice or more in the same 
 #   row, column or 3x3 subgrid
-# Time Complexity: ?
-# Space Complexity: ?
+# Time Complexity: I have no idea...O(n^2) since I have nested loops?
+# Space Complexity: O(n)
 def valid_sudoku(table)
 
   return true if in_row?(table) && in_column?(table) && in_box?(table)
