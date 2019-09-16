@@ -1,9 +1,9 @@
-require 'pry'
+require "pry"
 
 # This method will return an array of arrays.
 # Each subarray will have strings which are anagrams of each other
-# Time Complexity: ?
-# Space Complexity: ?
+# Time Complexity: O(n) where n is the number of strings in the array.
+# Space Complexity: O(n) where n is the number of strings in the array.
 
 def grouped_anagrams(strings)
   sorted_words = {}
@@ -11,11 +11,13 @@ def grouped_anagrams(strings)
 
   strings.each do |word|
     word_sorted = word.chars.sort.join
-    if !sorted_words.include?(word_sorted)
-      sorted_words[word_sorted] = sorted_words.length
-      binding.pry
-      anagrams[sorted_words.length] = [word]
+    if !sorted_words.keys.include?(word_sorted)
+      # In the hashmap, the sorted word will point to the index in the outer array that the anagram should be placed.
+      index = sorted_words.length
+      sorted_words[word_sorted] = index
+      anagrams[index] = [word]
     else
+      # Add anagram to correct group.
       anagrams[sorted_words[word_sorted]].push(word)
     end
   end
@@ -31,11 +33,10 @@ def top_k_frequent_elements(list, k)
   raise NotImplementedError, "Method hasn't been implemented yet!"
 end
 
-
 # This method will return the true if the table is still
 #   a valid sudoku table.
 #   Each element can either be a ".", or a digit 1-9
-#   The same digit cannot appear twice or more in the same 
+#   The same digit cannot appear twice or more in the same
 #   row, column or 3x3 subgrid
 # Time Complexity: ?
 # Space Complexity: ?
