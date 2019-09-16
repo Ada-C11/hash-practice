@@ -1,20 +1,64 @@
-
-
 # This method will return an array of arrays.
 # Each subarray will have strings which are anagrams of each other
-# Time Complexity: ?
-# Space Complexity: ?
+# Time Complexity: O(n)
+# Space Complexity: O(n)
 
 def grouped_anagrams(strings)
-  raise NotImplementedError, "Method hasn't been implemented yet!"
+  return [] if strings.empty?
+
+  anagram_hash = Hash.new()
+    strings.each do |string|
+      word_array = string.split("").sort
+      if anagram_hash.include?(word_array)
+        anagram_hash[word_array] << string
+      else
+        anagram_hash[word_array] = [string]
+      end
+    end
+
+    result = []
+    anagram_hash.each do |key, value|
+      result << value
+    end
+    return result
+
 end
 
 # This method will return the k most common elements
-# in the case of a tie it will select the first occuring element.
-# Time Complexity: ?
-# Space Complexity: ?
+# in the case of a tie it will select the first occurring element.
+# Time Complexity: O(n)
+# Space Complexity: O(n)
 def top_k_frequent_elements(list, k)
-  raise NotImplementedError, "Method hasn't been implemented yet!"
+  return [] if list.empty?
+  return list if list.length == 1
+
+  element_count = Hash.new()
+
+  list.each do |element|
+    if element_count[element]
+      element_count[element] += 1
+    else
+      element_count[element] = 1
+    end
+  end
+
+  result = []
+
+  k.times do |i|
+      count = 0
+      frequent_element = nil
+      element_count.each do |element, frequency|
+        if frequency > count
+          count = frequency
+          frequent_element = element
+        end
+      end
+      result << frequent_element
+      element_count[frequent_element] = 0 if frequent_element
+    end
+
+  return result
+
 end
 
 
@@ -26,5 +70,75 @@ end
 # Time Complexity: ?
 # Space Complexity: ?
 def valid_sudoku(table)
-  raise NotImplementedError, "Method hasn't been implemented yet!"
+
+  return true if in_row?(table) && in_column?(table) && in_box?(table)
+
+  return false
+
+end
+
+  def in_row?(table)
+    9.times do |row|
+        sudoku_hash = Hash.new()
+        9.times do |i|
+          # If already encountered before,
+          # return false
+          if sudoku_hash[table[row][i]]
+            return false
+          end
+
+          # If it is not an empty cell, insert value
+          # at the current cell into the hash
+          if table[row][i] != '.'
+          sudoku_hash[table[row][i]] = 1
+          end
+
+        end
+    end
+  end
+
+  # Checks whether there is any
+  # duplicate in current column or not.
+  def in_column?(table)
+
+    9.times do |col|
+      column_hash = Hash.new()
+
+      9.times do |i|
+
+        # If already encountered before,
+        # return false
+        if column_hash[table[i][col]]
+          return false
+        end
+
+        # If it is not an empty cell, insert
+        # value at the current cell in the set
+        if table[i][col] != '.'
+          column_hash[table[i][col]] = 1
+        end
+      end
+    end
+  end
+
+  # Checks whether there is any duplicate
+  # in current 3×3 box or not.
+  def in_box?(table)
+
+  box_hash = Hash.new()
+
+
+  3.times do |row|
+    3.times do |col|
+       current = table[row][col]
+        if box_hash[current]
+          return false
+        end
+
+        if current != '.'
+          box_hash[current] = 1
+        end
+    end
+  end
+
 end
