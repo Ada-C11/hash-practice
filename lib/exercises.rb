@@ -3,8 +3,6 @@
 # Time Complexity: O(n)
 # Space Complexity: O(n)
 
-require 'pry'
-
 def grouped_anagrams(strings)
   return [] if strings.empty?
 
