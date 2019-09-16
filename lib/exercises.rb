@@ -83,14 +83,11 @@ end
     table.length.times do |row|
         sudoku_hash = Hash.new()
         table.length.times do |i|
-          # If already encountered before,
-          # return false
+
           if sudoku_hash[table[row][i]]
             return false
           end
 
-          # If it is not an empty cell, insert value
-          # at the current cell into the hash
           if table[row][i] != '.'
           sudoku_hash[table[row][i]] = 1
           end
@@ -108,14 +105,9 @@ end
 
       table.length.times do |i|
 
-        # If already encountered before,
-        # return false
         if column_hash[table[i][col]]
           return false
         end
-
-        # If it is not an empty cell, insert
-        # value at the current cell in the set
         if table[i][col] != '.'
           column_hash[table[i][col]] = 1
         end
