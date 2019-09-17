@@ -2,8 +2,8 @@
 
 # This method will return an array of arrays.
 # Each subarray will have strings which are anagrams of each other
-# Time Complexity: ?
-# Space Complexity: ?
+# Time Complexity: O(n log n)?  (Not sure what Ruby's default sort implementation is...)
+# Space Complexity: O(n), where n is the number of items in the array
 
 def grouped_anagrams(strings)
   # raise NotImplementedError, "Method hasn't been implemented yet!"
