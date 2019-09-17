@@ -26,10 +26,40 @@ end
 
 # This method will return the k most common elements
 # in the case of a tie it will select the first occuring element.
-# Time Complexity: ?
-# Space Complexity: ?
+# Time Complexity: O(nlog n) because of the sorted array is at least
+# Space Complexity: O(n), which ever takes up more space, the freq_hash (likely this one) or the sorted frequencies
 def top_k_frequent_elements(list, k)
-  raise NotImplementedError, "Method hasn't been implemented yet!"
+  if list == [] || k == 0
+    return []
+  end
+
+  freq_hash = {}
+  unique_values = []
+  max_freq = 0
+  list.each do |num|
+    if freq_hash.include?(num)
+      freq_hash[num] += 1
+    else
+      freq_hash[num] = 1
+      unique_values << num
+    end
+  end
+
+  sorted_frequencies = freq_hash.values.sort
+
+  answer_arr = []
+  k.times do
+    unique_values.each do |num|
+      if freq_hash[num] == sorted_frequencies[-1]
+        answer_arr << num
+        sorted_frequencies.pop
+        freq_hash.delete(num)
+        break
+      end
+    end
+  end
+
+  return answer_arr
 end
 
 # This method will return the true if the table is still
