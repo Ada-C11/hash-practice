@@ -2,8 +2,8 @@
 
 # This method will return an array of arrays.
 # Each subarray will have strings which are anagrams of each other
-# Time Complexity: ?
-# Space Complexity: ?
+# Time Complexity: O(n * m log m) where n is the length of the list, and m is length of the string, because you itereate over the list once, and for each word you sort it, which lis m log m
+# Space Complexity: O(n) where n is the size of the array
 
 def grouped_anagrams(strings)
   return [] if strings.length == 0
