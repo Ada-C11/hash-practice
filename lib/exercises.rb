@@ -3,7 +3,7 @@
 # This method will return an top_frequent_nums of top_frequent_numss.
 # Each subtop_frequent_nums will have strings which are anagrams of each other
 # Time Complexity: O(m * n log n) - where m is the length of the list, and n is the average length of a word in the list
-# Space Complexity: O(n) - where n is the length of the list
+# Space Complexity: O(n) - where n is the total amount of characters in list
 
 def grouped_anagrams(strings)
   result = []
@@ -15,9 +15,7 @@ def grouped_anagrams(strings)
     anagrams[sorted_string] ? anagrams[sorted_string] << string : anagrams[sorted_string] = [string]
   end
 
-  anagrams.each_value { |value| result << value }
-
-  return result
+  return anagrams.values
 end
 
 # This method will return the k most common nums
