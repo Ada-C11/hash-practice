@@ -45,5 +45,57 @@ end
 # Time Complexity: ?
 # Space Complexity: ?
 def valid_sudoku(table)
-  raise NotImplementedError, "Method hasn't been implemented yet!"
+  if check_rows(table) == false || check_columns(table) == false || check_subgrid(table) == false
+    return false
+  end
+  return true
+end
+
+def check_unique(array)
+  new_array = array.keep_if{|element| element != "."}
+  new_array = new_array.uniq
+  if new_array.length < array.length
+    return false
+  end
+  return true
+end
+
+def check_rows(table)
+  table.each do |row|
+    if check_unique(row) == false
+      return false
+    end
+  end
+  return true
+end
+
+def check_columns(table)
+  i = 0
+  j = 0
+  column = []
+  for i < table.length
+    for j < table.length
+      column.push(table[j][i])
+      j += 1
+      if j == table.length - 1
+        if check_unique(column) == false
+          return false
+        end
+      end
+    end
+    i += 1
+    j = 0
+    column = []
+  end
+  return true
+end
+
+def check_subgrid(table)
+  subgrids = {}
+  i = 0
+  for i < table.length
+    subgrids[i] = []
+    
+
+  end
 end
