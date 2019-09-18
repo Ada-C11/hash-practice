@@ -62,7 +62,7 @@ def top_k_frequent_elements(list, k)
       # we can push the highest occurening keys into an array and return the array
 
       top_k = []
-      hash.sort_by { |key, value| value }
+      hash.sort_by { |key, value| -value }
       hash.each do |key, value|
         top_k << key
       end
