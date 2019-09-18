@@ -5,7 +5,7 @@ describe "exercises" do
     it "will return [] for an empty array" do
       #Arrange
       list = []
-      
+
       # Act-Assert
       expect(grouped_anagrams(list)).must_equal []
     end
