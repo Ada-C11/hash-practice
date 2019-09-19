@@ -1,7 +1,7 @@
 # This method will return an array of arrays.
 # Each subarray will have strings which are anagrams of each other
-# Time Complexity: ?
-# Space Complexity: ?
+# Time Complexity: O(n) because it will need to check every item in the array
+# Space Complexity: O(1)
 def grouped_anagrams(strings)
   if strings.length == 0
     return []
@@ -34,6 +34,32 @@ def grouped_anagrams(strings)
   end
   return anagrams
 end
+
+# def grouped_anagrams(list)
+#   if list.length == 0
+#     return []
+#   end
+
+#   parent = [[list[0]]]
+
+#   for i in (1...list.length)
+#     new_word_srtd = list[i].chars.sort.join
+#     is_anagram = false
+
+#     for j in (0...parent.length)
+#       old_words_srtd = parent[j][0].chars.sort.join
+#       if old_words_srtd == new_word_srtd
+#         is_anagram = true
+#         parent[j].push(list[i])
+#         break
+#       end
+#     end
+#     if is_anagram == false
+#       parent.push([list[i]])
+#     end
+#   end
+#   return parent
+# end
 
 # This method will return the k most common elements
 # in the case of a tie it will select the first occuring element.
@@ -73,7 +99,7 @@ end
 # This method will return the true if the table is still
 #   a valid sudoku table.
 #   Each element can either be a ".", or a digit 1-9
-#   The same digit cannot appear twice or more in the same 
+#   The same digit cannot appear twice or more in the same
 #   row, column or 3x3 subgrid
 # Time Complexity: ?
 # Space Complexity: ?
