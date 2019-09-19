@@ -8,19 +8,19 @@ def grouped_anagrams(strings)
   end
 
   hash = Hash.new
-  array_of_words = []
+  temp_word = ""
 
   # in a loop
     # split the word at ("") and sort it and save the results into an array (if 2 words are anagrams of each other, sorting them means the letters of both words will be re-arranged in the same sequence)
   strings.each do |word|
-    array_of_words = word.split("").sort
+    temp_word = word.split("").sort
 
     # check if the hash has the element of the array as a key, if not then add it as a key in the hash
-    if hash.include?(array_of_words)
-      hash[array_of_words].push(word)
+    if hash.include?(temp_word)
+      hash[temp_word].push(word)
     # check if the 2nd element is in the hash, if not then add it as a value to the key that was previously added
     else
-      hash[array_of_words] = [word]
+      hash[temp_word] = [word]
     end
   end
 
