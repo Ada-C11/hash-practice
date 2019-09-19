@@ -20,12 +20,7 @@ def grouped_anagrams(strings)
     end
   end
 
-    final_result = []
-    string_hash.each do |key, value|
-      final_result.push(value)
-    end
-
-    return final_result
+  return string_hash.values
 end
 
 # This method will return the k most common elements
