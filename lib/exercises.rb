@@ -6,7 +6,16 @@
 # Space Complexity: ?
 
 def grouped_anagrams(strings)
-  raise NotImplementedError, "Method hasn't been implemented yet!"
+  buckets = {}
+  strings.each do |str|
+    sorted = str.chars.sort.join
+    if buckets[sorted]
+      buckets[sorted] << str
+    else
+      buckets[sorted] = [str]
+    end
+  end
+  return buckets.values
 end
 
 # This method will return the k most common elements
