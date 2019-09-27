@@ -68,8 +68,9 @@ describe "exercises" do
     end
   end
 
-  xdescribe "top_k_frequent_elements" do
+  describe "top_k_frequent_elements" do
     it "works with example 1" do
+      
       # Arrange
       list = [1,1,1,2,2,3]
       k = 2
@@ -82,6 +83,7 @@ describe "exercises" do
     end
 
     it "works with example 2" do
+
       # Arrange
       list = [1]
       k = 1
@@ -94,6 +96,7 @@ describe "exercises" do
     end
 
     it "will return [] for an empty array" do
+
       # Arrange
       list = []
       k = 1
@@ -106,6 +109,7 @@ describe "exercises" do
     end
 
     it "will work for an array with k elements all unique" do
+
       # Arrange
       list = [1, 2, 3]
       k = 3
@@ -118,6 +122,7 @@ describe "exercises" do
     end
 
     it "will work for an array when k is 1 and several elements appear 1 time (HINT Pick the 1st one)" do
+
       # Arrange
       list = [1, 2, 3]
       k = 1
@@ -131,7 +136,7 @@ describe "exercises" do
 
   end
 
-  xdescribe "valid sudoku" do
+  describe "valid sudoku" do
     it "works for the table given in the README" do
       # Arrange
       table = [
