@@ -51,8 +51,8 @@ end
 #   Each element can either be a ".", or a digit 1-9
 #   The same digit cannot appear twice or more in the same 
 #   row, column or 3x3 subgrid
-# Time Complexity: ?
-# Space Complexity: ?
+# Time Complexity: O(n^2) where n is the number of elements in a row, column, or box
+# Space Complexity: O(n) since only one counts hash is used at a time
 def valid_sudoku(table)
   
   # check if rows valid
@@ -90,7 +90,7 @@ def valid_sudoku(table)
     col_end = 3
     while col_end <= 9
 
-      # iterate through each value in box to check for duplicates
+      # iterate through each value in box to check for duplicates 
       counts = Hash.new(0)
       (row_start...row_end).each do |row_index|
         (col_start...col_end).each do |col_index|
