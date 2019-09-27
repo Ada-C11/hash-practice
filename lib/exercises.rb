@@ -28,19 +28,18 @@ def top_k_frequent_elements(list, k)
   list.each do |el| # O(n)
       counts[el] += 1
       
-      if !top_values.include?(el) #O(k)
-        index = k - 1
+      index = k - 1
+      index -= 1 until top_values[index] == el if top_values.include?(el) #O(k)      
         while index >= 0 #O(k)
           if counts[el] > counts[top_values[index]]
             temp = top_values[index] 
             top_values[index] = el
             top_values[index + 1] = temp if index + 1 < k
-            index -=1 
+            index -= 1 
           else
             break
           end      
         end
-    end
   end
   return top_values
 end
