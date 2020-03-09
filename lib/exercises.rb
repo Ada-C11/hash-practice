@@ -6,7 +6,18 @@
 # Space Complexity: ?
 
 def grouped_anagrams(strings)
-  raise NotImplementedError, "Method hasn't been implemented yet!"
+  return [] if strings.empty?
+
+  #create empty hash
+  hash = {}
+  strings.each do |word|
+    alphabet = word.chars.sort.join
+    if !hash[alphabet]
+      hash[alphabet]
+    else
+      hash[alphabet] = [word]
+    end
+  end
 end
 
 # This method will return the k most common elements
@@ -17,11 +28,10 @@ def top_k_frequent_elements(list, k)
   raise NotImplementedError, "Method hasn't been implemented yet!"
 end
 
-
 # This method will return the true if the table is still
 #   a valid sudoku table.
 #   Each element can either be a ".", or a digit 1-9
-#   The same digit cannot appear twice or more in the same 
+#   The same digit cannot appear twice or more in the same
 #   row, column or 3x3 subgrid
 # Time Complexity: ?
 # Space Complexity: ?
